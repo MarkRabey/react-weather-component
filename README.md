@@ -7,7 +7,7 @@ npm install react-weather --save
 ```
 
 ## Live Demo
-* <a href="//Opentrace.gihub.io/react-weather" target="_blank">Basic Example</a>
+* <a href="//Opentrace.github.io/react-weather" target="_blank">Basic Example</a>
 
 ## Usage
 Enter usage details here.
