@@ -14,7 +14,7 @@ config.externals = {
 };
 config.target = 'node';
 config.plugins = [
-  new ExtractTextPlugin('Weather.css', { allChunks: true }),
+  new ExtractTextPlugin({ filename:'Weather.css', allChunks: true }),
 ];
 
 module.exports = config;
