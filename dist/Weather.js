@@ -158,7 +158,7 @@ var Weather = function (_React$Component) {
 
       var coordinates = this.state.coordinates;
 
-      var API_URL = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + coordinates.latitude + '&lon=' + coordinates.longitude + '&appid=' + API_KEY;
+      var API_URL = '//api.openweathermap.org/data/2.5/weather?units=metric&lat=' + coordinates.latitude + '&lon=' + coordinates.longitude + '&appid=' + API_KEY;
       fetch(API_URL).then(function (c) {
         return c.json();
       }).then(function (forecast) {

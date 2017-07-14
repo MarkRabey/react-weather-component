@@ -1,6 +1,11 @@
 # react-weather-component
 Display weather for current location.
 
+## IMPORTANT!
+GitHub serves all GitHub Pages content via `https`, however, the OpenWeatherMap API does not currently function on `https`. Therefore, the demo pages aren't working correctly. I'm working to resolve this (possibly with another API provider).
+
+To test outside of GitHub Pages, clone the repo, run `npm install && npm start` and visit http://localhost:8080.
+
 ## Install
 ```shell
 npm install react-weather-component --save

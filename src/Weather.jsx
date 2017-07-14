@@ -51,7 +51,7 @@ export default class Weather extends React.Component {
 
   fetchForecast() {
     const { coordinates } = this.state;
-    const API_URL = `//api.openweathermap.org/data/2.5/weather?units=metric&lat=${ coordinates.latitude }&lon=${ coordinates.longitude }&appid=${ API_KEY }`;
+    const API_URL = `http://api.openweathermap.org/data/2.5/weather?units=metric&lat=${ coordinates.latitude }&lon=${ coordinates.longitude }&appid=${ API_KEY }`;
     fetch(API_URL)
       .then(c => c.json())
       .then((forecast) => {
