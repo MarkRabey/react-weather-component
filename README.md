@@ -1,13 +1,13 @@
-# react-weather
+# react-weather-component
 Display weather for current location.
 
 ## Install
 ```shell
-npm install react-weather --save
+npm install react-weather-component --save
 ```
 
 ## Live Demo
-* <a href="//Opentrace.github.io/react-weather" target="_blank">Basic Example</a>
+* <a href="//Opentrace.github.io/react-weather-component" target="_blank">Basic Example</a>
 
 ## Usage
 Enter usage details here.

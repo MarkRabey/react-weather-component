@@ -1,5 +1,5 @@
 {
-  "name": "react-weather",
+  "name": "react-weather-component",
   "version": "0.1.0",
   "description": "Display weather for current location.",
   "main": "dist/index.js",
@@ -14,13 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Opentrace/react-weather"
+    "url": "https://github.com/Opentrace/react-weather-component"
   },
   "keywords": [
     "react",
     "reactjs",
     "react component",
-    "react-weather"
+    "react-weather",
+    "react-weather-component"
   ],
   "author": "Mark Rabey <mark@markrabey.com>",
   "license": "MIT",
