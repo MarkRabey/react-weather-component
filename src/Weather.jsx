@@ -17,14 +17,18 @@ export default class Weather extends React.Component {
     };
 
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        this.setState({
-          coordinates: pos.coords,
-        });
-        this.checkLocation();
-      }, () => {
-        this.checkLocation();
-      }, options);
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          this.setState({
+            coordinates: pos.coords,
+          });
+          this.checkLocation();
+        },
+        () => {
+          this.checkLocation();
+        },
+        options,
+      );
     }
 
     setInterval(() => this.checkLocation(), 10 * 60 * 1000);
@@ -34,7 +38,7 @@ export default class Weather extends React.Component {
     if (!this.state.coordinates) {
       fetch('https://ipinfo.io/json')
         .then(res => res.json())
-        .then((ip) => {
+        .then(ip => {
           this.setState({
             coordinates: {
               latitude: +ip.loc.split(',')[0],
@@ -50,12 +54,12 @@ export default class Weather extends React.Component {
   }
 
   fetchForecast() {
-    const { coordinates } = this.state;
-    const API_URL = `http://api.openweathermap.org/data/2.5/weather?units=metric&lat=${ coordinates.latitude }&lon=${ coordinates.longitude }&appid=${ API_KEY }`;
+    const {coordinates} = this.state;
+    const API_URL = `http://api.openweathermap.org/data/2.5/weather?units=metric&lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${API_KEY}`;
     fetch(API_URL)
       .then(c => c.json())
-      .then((forecast) => {
-        this.setState({ forecast });
+      .then(forecast => {
+        this.setState({forecast});
       });
   }
 
@@ -70,21 +74,17 @@ export default class Weather extends React.Component {
 
     return (
       <div className="weather-container">
-        <h2>Weather for { this.state.forecast.name }</h2>
-        <p>Current temperature: { this.state.forecast.main.temp }&deg;c</p>
-        <p>Forecast High: { this.state.forecast.main.temp_max }&deg;c</p>
-        <p>Forecast Low: { this.state.forecast.main.temp_min }&deg;c</p>
-        <p>Humidity: { this.state.forecast.main.humidity }%</p>
-        <p>Wind Speed: { this.state.forecast.wind.speed } km/h</p>
+        <h2>Weather for {this.state.forecast.name}</h2>
+        <p>Current temperature: {this.state.forecast.main.temp}&deg;c</p>
+        <p>Forecast High: {this.state.forecast.main.temp_max}&deg;c</p>
+        <p>Forecast Low: {this.state.forecast.main.temp_min}&deg;c</p>
+        <p>Humidity: {this.state.forecast.main.humidity}%</p>
+        <p>Wind Speed: {this.state.forecast.wind.speed} km/h</p>
       </div>
     );
   }
 
   render() {
-    return (
-      <div>
-        { this.renderWeather() }
-      </div>
-    );
+    return <div>{this.renderWeather()}</div>;
   }
 }
