@@ -1,11 +1,11 @@
 import {Theme} from '.';
 
-const lightTheme: Theme = {
-  name: 'light',
+const defaultTheme: Theme = {
+  name: 'default',
   fontFamily: 'sans serif',
   containerStyles: {
     border: '1px solid #ddd',
   },
 };
 
-export default lightTheme;
+export default defaultTheme;
