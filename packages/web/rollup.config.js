@@ -5,6 +5,7 @@ import del from 'rollup-plugin-delete';
 import cleanup from 'rollup-plugin-cleanup';
 import autoExternal from 'rollup-plugin-auto-external';
 import svg from 'rollup-plugin-svg';
+import extensions from 'rollup-plugin-extensions';
 
 import pkg from './package.json';
 
@@ -29,6 +30,18 @@ export default {
     del({targets: 'lib/*'}),
     alias({
       entries: [{find: 'react-native', replacement: 'react-native-web'}],
+    }),
+    extensions({
+      extensions: [
+        '.web.tsx',
+        '.tsx',
+        '.web.ts',
+        '.ts',
+        '.web.jsx',
+        '.jsx',
+        '.web.js',
+        '.js',
+      ],
     }),
     autoExternal(),
     typescript(),

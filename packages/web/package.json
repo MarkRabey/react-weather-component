@@ -19,6 +19,7 @@
     "dev": "yalc publish --push"
   },
   "dependencies": {
+    "react-native-geolocation-service": "^5.3.0-beta.4",
     "react-native-web": "^0.17.7"
   },
   "peerDependencies": {
