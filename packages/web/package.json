@@ -1,0 +1,62 @@
+{
+  "name": "react-weather-component",
+  "version": "1.0.0",
+  "description": "A React component to display weather for the current location.",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.exm.js",
+  "repository": "https://github.com/MarkRabey/react-weather-component",
+  "homepage": "https://github.com/MarkRabey/react-weather-component/tree/main/packages/web",
+  "author": "Mark Rabey <mark@markrabey.com>",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "prepublishOnly": "npm run build",
+    "dev": "yalc publish --push"
+  },
+  "dependencies": {
+    "react-native-web": "^0.17.7"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@types/react-native-svg-uri": "^1.2.4",
+    "@types/styled-components": "^5.1.24",
+    "@types/styled-components-react-native": "^5.1.3",
+    "@types/styled-system": "^5.1.15",
+    "rollup": "^2.70.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-svg": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.6.2"
+  },
+  "resolutions": {
+    "@types/react": "^17"
+  },
+  "files": [
+    "lib"
+  ],
+  "types": "lib/index.d.ts",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

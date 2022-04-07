@@ -1,70 +1,94 @@
 {
   "name": "react-weather-component",
-  "version": "0.1.0",
-  "description": "Display weather for current location.",
-  "main": "dist/index.js",
-  "scripts": {
-    "dist": "webpack --config webpack.dist.config.js",
-    "standalone": "webpack --config webpack.standalone.config.js",
-    "docs:build": "webpack --devtool inline-source-map",
-    "docs:deploy": "npm run docs:build && git add demo/dist && git commit -m \"rebuild docs\" && git subtree push --prefix demo/dist origin gh-pages",
-    "start": "webpack-dev-server --devtool inline-source-map --progress --colors --inline --hot --content-base demo",
-    "prepublish": "npm run dist && npm run docs:deploy",
-    "test": "karma start karma.conf.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Opentrace/react-weather-component"
-  },
-  "keywords": [
-    "react",
-    "reactjs",
-    "react component",
-    "react-weather",
-    "react-weather-component"
-  ],
+  "version": "1.0.0",
+  "description": "Display weather for current location in React or React Native",
+  "main": "index.js",
+  "repository": "https://github.com/MarkRabey/react-weather-component",
   "author": "Mark Rabey <mark@markrabey.com>",
   "license": "MIT",
-  "dependencies": {
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+  "scripts": {
+    "build": "lerna run build",
+    "build:web": "lerna run build --scope react-weather-component",
+    "build:native": "lerna run build --scope react-native-weather-component",
+    "build:web:watch": "npm-watch build:web",
+    "build:native:watch": "npm-watch build:native",
+    "bootstrap": "lerna bootstrap --ignore-scripts --force-local",
+    "lint": "tsc && eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "tsc && eslint . --fix --ext .js,.jsx,.ts,.tsx",
+    "test": "jest --config jest.config.ts",
+    "test:coverage": "yarn test --coverage=true",
+    "test:badges": "yarn test:coverage && jest-coverage-badges",
+    "postinstall": "yarn bootstrap",
+    "publish": "lerna publish from-package --no-private --yes",
+    "prepare": "husky install",
+    "_dev:web": "lerna run dev --scope react-weather-component",
+    "dev:web": "npm-watch _dev:web",
+    "_dev:native": "lerna run dev --scope react-native-weather-component",
+    "dev:native": "npm-watch _dev:native",
+    "versionup": "lerna version --conventional-commits --no-git-tag-version",
+    "versionup:patch": "lerna version patch --conventional-commits --no-git-tag-version",
+    "versionup:minor": "lerna version minor --conventional-commits --no-git-tag-version",
+    "versionup:major": "lerna version major --conventional-commits --no-git-tag-version",
+    "postversionup": "yarn run commit-version",
+    "postversionup:patch": "yarn run commit-version",
+    "postversionup:minor": "yarn run commit-version",
+    "postversionup:major": "yarn run commit-version",
+    "commit-version": "git add . && git commit -m \"chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
+    "release": "lerna publish from-package",
+    "release:canary": "lerna publish --canary --preid next --dist-tag next --force-publish='*' --no-push --no-git-tag-version --yes"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.4",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.2",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-import": "^2.6.1",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "eslint_d": "^5.0.0",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "jasmine-core": "^2.6.4",
-    "jasmine-react-matchers": "^1.0.2",
-    "karma": "^1.7.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-cli": "^1.0.1",
-    "karma-jasmine": "^1.1.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^2.0.3",
-    "mock-promises": "^0.8.2",
-    "node-sass": "^4.5.3",
-    "postcss-loader": "^2.0.6",
-    "promise-mock": "^1.1.1",
-    "react-addons-test-utils": "^15.6.0",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "@react-native-community/eslint-config": "^3.0.1",
+    "@testing-library/jest-native": "^4.0.4",
+    "@testing-library/react-native": "^9.0.0",
+    "@types/jest": "^27.4.1",
+    "@types/react-native": "^0.67.3",
+    "@types/react-native-svg-uri": "^1.2.4",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "babel-jest": "^27.5.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^7.0.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "jest-coverage-badges": "^1.1.2",
+    "lerna": "^4.0.0",
+    "lint-staged": "^12.3.6",
+    "npm-watch": "^0.11.0",
+    "prettier": "^2.6.0",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-native": "^0.67.3"
+  },
+  "watch": {
+    "build:native": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "*"
+    },
+    "_dev:native": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "*"
+    },
+    "_dev:web": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "*"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "yarn lint:fix"
   }
 }
