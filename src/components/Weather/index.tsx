@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 
 import {Coordinates} from '../../models/Coordinates';
 import {WeatherResponse} from '../../models/Weather';
@@ -38,10 +38,22 @@ const Weather: React.FC<Props> = ({apiKey}) => {
     }
   }, [coordinates, forecast, getForecast]);
 
-  return isLoading ? (
-    <Text>Loading...</Text>
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+
+  return forecast ? (
+    <View>
+      <Text style={{fontSize: 24}}>Weather for {forecast?.name}</Text>
+      <Text>Weather for {forecast.name}</Text>
+      <Text>Current Temperature: {forecast.main.temp}°c</Text>
+      <Text>Forecast High: {forecast.main.temp_max}°c</Text>
+      <Text>Forecast Low: {forecast.main.temp_min}°c</Text>
+      <Text>Humidity: {forecast.main.humidity}%</Text>
+      <Text>Wind Speed: {forecast.wind.speed}%</Text>
+    </View>
   ) : (
-    <Text>Weather: {forecast?.main.temp}</Text>
+    <Text>Something went wrong...</Text>
   );
 };
 
