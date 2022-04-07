@@ -38,19 +38,21 @@ const Weather: React.FC<Props> = ({apiKey}) => {
     }
   }, [coordinates, forecast, getForecast]);
 
-  if (isLoading) {
-    return <Text>Loading...</Text>;
-  }
-
-  return forecast ? (
+  return forecast && !isLoading ? (
     <View>
-      <Text style={{fontSize: 24}}>Weather for {forecast?.name}</Text>
-      <Text>Weather for {forecast.name}</Text>
-      <Text>Current Temperature: {forecast.main.temp}°c</Text>
-      <Text>Forecast High: {forecast.main.temp_max}°c</Text>
-      <Text>Forecast Low: {forecast.main.temp_min}°c</Text>
-      <Text>Humidity: {forecast.main.humidity}%</Text>
-      <Text>Wind Speed: {forecast.wind.speed}%</Text>
+      {isLoading ? (
+        <Text>...Loading</Text>
+      ) : (
+        <>
+          <Text style={{fontSize: 24}}>Weather for {forecast.name}</Text>
+          <Text>Weather for {forecast.name}</Text>
+          <Text>Current Temperature: {forecast.main.temp}°c</Text>
+          <Text>Forecast High: {forecast.main.temp_max}°c</Text>
+          <Text>Forecast Low: {forecast.main.temp_min}°c</Text>
+          <Text>Humidity: {forecast.main.humidity}%</Text>
+          <Text>Wind Speed: {forecast.wind.speed}%</Text>
+        </>
+      )}
     </View>
   ) : (
     <Text>Something went wrong...</Text>
