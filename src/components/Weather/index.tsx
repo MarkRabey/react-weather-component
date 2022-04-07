@@ -38,7 +38,7 @@ const Weather: React.FC<Props> = ({apiKey}) => {
     }
   }, [coordinates, forecast, getForecast]);
 
-  return forecast ? (
+  return forecast && !isLoading ? (
     <View>
       {isLoading ? (
         <Text>...Loading</Text>
