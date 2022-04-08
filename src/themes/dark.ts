@@ -1,10 +1,19 @@
-import {Theme} from '.';
+import {brandColors, Theme} from '.';
 
 const darkTheme: Theme = {
   name: 'dark',
   containerStyles: {
-    backgroundColor: '#333',
-    borderColor: '#444',
+    backgroundColor: brandColors.coolGray[600],
+    borderColor: brandColors.coolGray[600],
+  },
+  headingStyles: {
+    color: brandColors.lightText,
+  },
+  subheadingStyles: {
+    color: brandColors.violet[400],
+  },
+  detailStyles: {
+    color: brandColors.violet[400],
   },
 };
 
