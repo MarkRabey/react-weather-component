@@ -1,19 +1,47 @@
+import {StyleProp, ColorValue, ViewStyle, TextStyle} from 'react-native';
+import {themeToStyleSheet} from './themeToStyleSheet';
+
+export const defaultStyles = themeToStyleSheet();
+
+export interface WeatherStyles {
+  container: StyleProp<ViewStyle>;
+  heading: StyleProp<TextStyle>;
+  details: StyleProp<TextStyle>;
+}
 export interface Theme {
   name: string;
-  fontFamily: string;
-  containerStyles: ContainerStyles;
+  containerStyles?: ViewStyle;
+  headingStyles?: ThemeTextStyle;
+  detailStyles?: ThemeTextStyle;
 }
 
-export interface ContainerStyles {
-  border: string;
+interface ThemeTextStyle extends MarginStyle {
+  color?: ColorValue;
+  fontWeight?:
+    | 'normal'
+    | 'bold'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | undefined;
+  fontFamily?: string | undefined;
+  fontSize?: number | undefined;
+  fontStyle?: 'normal' | 'italic' | undefined;
 }
 
-import defaultTheme from './default';
-import light from './light';
-import dark from './dark';
-
-export default {
-  [defaultTheme.name]: defaultTheme,
-  [light.name]: light,
-  [dark.name]: dark,
-};
+interface MarginStyle {
+  margin?: number | string | undefined;
+  marginBottom?: number | string | undefined;
+  marginEnd?: number | string | undefined;
+  marginHorizontal?: number | string | undefined;
+  marginLeft?: number | string | undefined;
+  marginRight?: number | string | undefined;
+  marginStart?: number | string | undefined;
+  marginTop?: number | string | undefined;
+}

@@ -4,19 +4,24 @@ import {Text, View} from 'react-native';
 import {Coordinates} from '../../models/Coordinates';
 import {WeatherResponse} from '../../models/Weather';
 import {getCoordinates, getWeather} from '../../api';
+import {useStyles} from '../../hooks/useStyles';
 
 interface Props {
   apiKey: string;
 }
 
 const Weather: React.FC<Props> = ({apiKey}) => {
+  const styles = useStyles();
+
   const [isLoading, setIsLoading] = useState(true);
   const [forecast, setForecast] = useState<WeatherResponse | null>(null);
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
 
   const getLocation = async () => {
+    await setIsLoading(true);
     const coords = await getCoordinates();
     setCoordinates(coords);
+    await setIsLoading(false);
   };
 
   const getForecast = useCallback(async () => {
@@ -24,7 +29,7 @@ const Weather: React.FC<Props> = ({apiKey}) => {
       await setIsLoading(true);
       const data = await getWeather(coordinates, apiKey);
       setForecast(data);
-      setIsLoading(false);
+      await setIsLoading(false);
     }
   }, [apiKey, coordinates]);
 
@@ -39,18 +44,26 @@ const Weather: React.FC<Props> = ({apiKey}) => {
   }, [coordinates, forecast, getForecast]);
 
   return forecast && !isLoading ? (
-    <View>
+    <View style={styles.container}>
       {isLoading ? (
-        <Text>...Loading</Text>
+        <Text style={styles.details}>...Loading</Text>
       ) : (
         <>
-          <Text style={{fontSize: 24}}>Weather for {forecast.name}</Text>
-          <Text>Weather for {forecast.name}</Text>
-          <Text>Current Temperature: {forecast.main.temp}°c</Text>
-          <Text>Forecast High: {forecast.main.temp_max}°c</Text>
-          <Text>Forecast Low: {forecast.main.temp_min}°c</Text>
-          <Text>Humidity: {forecast.main.humidity}%</Text>
-          <Text>Wind Speed: {forecast.wind.speed}%</Text>
+          <Text style={styles.heading}>Weather for {forecast.name}</Text>
+          <Text style={styles.details}>Weather for {forecast.name}</Text>
+          <Text style={styles.details}>
+            Current Temperature: {forecast.main.temp}°c
+          </Text>
+          <Text style={styles.details}>
+            Forecast High: {forecast.main.temp_max}°c
+          </Text>
+          <Text style={styles.details}>
+            Forecast Low: {forecast.main.temp_min}°c
+          </Text>
+          <Text style={styles.details}>
+            Humidity: {forecast.main.humidity}%
+          </Text>
+          <Text style={styles.details}>Wind Speed: {forecast.wind.speed}%</Text>
         </>
       )}
     </View>
