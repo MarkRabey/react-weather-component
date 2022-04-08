@@ -2,9 +2,21 @@ import {Theme} from '.';
 
 const defaultTheme: Theme = {
   name: 'default',
-  fontFamily: 'sans serif',
   containerStyles: {
-    border: '1px solid #ddd',
+    borderWidth: 2,
+    borderRadius: 4,
+    borderColor: '#333',
+    padding: 12,
+  },
+  headingStyles: {
+    fontFamily: 'sans-serif',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 6,
+  },
+  detailStyles: {
+    fontFamily: 'serif',
+    color: '#333',
   },
 };
 

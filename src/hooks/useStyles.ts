@@ -1,5 +1,10 @@
-import {useState} from 'react';
+import {defaultStyles, Theme} from '../themes';
+import {themeToStyleSheet} from '../themes/themeToStyleSheet';
 
-export const useStyles = () => {
-  return {};
+export const useStyles = (theme?: Theme) => {
+  if (theme) {
+    return themeToStyleSheet(theme);
+  }
+
+  return defaultStyles;
 };
