@@ -1,9 +1,19 @@
-import {Theme} from '.';
+import {brandColors, Theme} from '.';
 
 const lightTheme: Theme = {
   name: 'light',
   containerStyles: {
-    borderColor: '#cdcdcd',
+    backgroundColor: brandColors.coolGray[50],
+    borderColor: brandColors.coolGray[200],
+  },
+  headingStyles: {
+    color: brandColors.darkText,
+  },
+  subheadingStyles: {
+    color: brandColors.violet[500],
+  },
+  detailStyles: {
+    color: brandColors.violet[500],
   },
 };
 

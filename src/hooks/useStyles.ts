@@ -1,10 +1,10 @@
-import {defaultStyles, Theme} from '../themes';
+import {ColorSchemeName} from 'react-native';
+import {Theme, WeatherStyles} from '../themes';
 import {themeToStyleSheet} from '../themes/themeToStyleSheet';
 
-export const useStyles = (theme?: Theme) => {
-  if (theme) {
-    return themeToStyleSheet(theme);
-  }
-
-  return defaultStyles;
-};
+interface UseStyleArgs {
+  theme?: Theme;
+  colorScheme?: ColorSchemeName;
+}
+export const useStyles = (args?: UseStyleArgs) =>
+  themeToStyleSheet(args?.theme, args?.colorScheme);
