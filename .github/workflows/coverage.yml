@@ -1,8 +1,7 @@
 name: Coverage Report
 on:
   pull_request:
-    branches: [release/1.0.0]
-    types: [opened]
+    types: [opened, synchronize]
 jobs:
   coverage:
     runs-on: ubuntu-latest
