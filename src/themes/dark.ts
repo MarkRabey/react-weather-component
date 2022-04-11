@@ -1,4 +1,5 @@
-import {brandColors, Theme} from '.';
+import {brandColors} from '.';
+import {Theme} from './types';
 
 const darkTheme: Theme = {
   name: 'dark',

@@ -1,4 +1,4 @@
-import {Theme} from '.';
+import {Theme} from './types';
 import light from './light';
 import dark from './dark';
 
