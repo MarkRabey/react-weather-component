@@ -1,15 +1,14 @@
 import {StyleSheet, ColorSchemeName} from 'react-native';
 import merge from 'lodash.merge';
 
-import {brandColors, Theme, WeatherStyles} from '.';
+import {brandColors} from '.';
+import {Theme, WeatherStyles} from './types';
 import defaultTheme from './default';
 
 export const themeToStyleSheet = (
-  theme?: Theme,
-  colorScheme?: ColorSchemeName,
+  theme: Theme,
+  colorScheme: ColorSchemeName,
 ) => {
-  console.log({theme, colorScheme});
-
   const combinedTheme = theme
     ? merge(defaultTheme[colorScheme || 'light'], theme)
     : defaultTheme[colorScheme || 'light'];

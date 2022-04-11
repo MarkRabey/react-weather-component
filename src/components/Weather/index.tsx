@@ -5,20 +5,19 @@ import {Coordinates} from '../../models/Coordinates';
 import {WeatherResponse} from '../../models/Weather';
 import {getCoordinates, getWeather} from '../../api';
 import {useStyles} from '../../hooks/useStyles';
-import {Theme} from '../../themes';
+import {Theme} from '../../themes/types';
 import WeatherIcon from '../WeatherIcon';
+import {themes} from '../../themes';
 
 interface Props {
   apiKey: string;
-  theme?: Theme;
+  theme?: Theme | 'dark' | 'light';
   colorScheme?: ColorSchemeName;
 }
 
-const Weather: React.FC<Props> = ({apiKey, theme, colorScheme}) => {
-  const systemColorScheme = useColorScheme();
+const Weather: React.FC<Props> = ({apiKey, theme}) => {
   const styles = useStyles({
     theme,
-    colorScheme: colorScheme || systemColorScheme,
   });
 
   const [isLoading, setIsLoading] = useState(true);
