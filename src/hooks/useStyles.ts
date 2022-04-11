@@ -5,9 +5,16 @@ import {SystemTheme, themes} from '../themes';
 
 export const useStyles = (theme?: Theme | SystemTheme) => {
   const colorScheme = useColorScheme();
-  let selectedTheme = theme ? theme : themes[colorScheme || 'light'];
-  if (typeof selectedTheme === 'string') {
-    selectedTheme = themes[selectedTheme];
+  let selectedTheme;
+  if (theme) {
+    selectedTheme =
+      typeof theme === 'string'
+        ? themes[theme]
+        : themes[colorScheme || 'light'];
+  } else {
+    selectedTheme = themes[colorScheme || 'light'];
   }
-  return themeToStyleSheet(selectedTheme, colorScheme);
+
+  const styles = themeToStyleSheet(selectedTheme, colorScheme);
+  return {styles, selectedTheme};
 };
