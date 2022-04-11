@@ -6,7 +6,7 @@ import {Theme, WeatherStyles} from './types';
 import defaultTheme from './default';
 
 export const themeToStyleSheet = (
-  theme: Theme,
+  theme: Theme | undefined,
   colorScheme: ColorSchemeName,
 ) => {
   const combinedTheme = theme
