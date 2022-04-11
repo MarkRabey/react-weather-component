@@ -7,18 +7,16 @@ import {getCoordinates, getWeather} from '../../api';
 import {useStyles} from '../../hooks/useStyles';
 import {Theme} from '../../themes/types';
 import WeatherIcon from '../WeatherIcon';
-import {themes} from '../../themes';
+import {SystemTheme, themes} from '../../themes';
 
 interface Props {
   apiKey: string;
-  theme?: Theme | 'dark' | 'light';
+  theme?: Theme | SystemTheme;
   colorScheme?: ColorSchemeName;
 }
 
 const Weather: React.FC<Props> = ({apiKey, theme}) => {
-  const styles = useStyles({
-    theme,
-  });
+  const styles = useStyles(theme);
 
   const [isLoading, setIsLoading] = useState(true);
   const [forecast, setForecast] = useState<WeatherResponse | null>(null);
