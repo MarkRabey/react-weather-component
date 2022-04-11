@@ -17,7 +17,7 @@
     "lint:fix": "tsc && eslint . --fix --ext .js,.jsx,.ts,.tsx",
     "test": "jest --config jest.config.ts",
     "test:coverage": "yarn test --coverage=true",
-    "test:badges": "yarn test:coverage && jest-coverage-badges",
+    "test:badges": "jest-coverage-badges",
     "postinstall": "yarn bootstrap",
     "publish": "lerna publish from-package --no-private --yes",
     "prepare": "husky install",

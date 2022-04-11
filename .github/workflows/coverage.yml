@@ -1,0 +1,33 @@
+name: Coverage Report
+on:
+  pull_request:
+    branches: [release/1.0.0]
+    types: [opened]
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install
+        run: yarn
+      - name: Run tests
+        run: yarn test:coverage
+      - name: Check coverage
+        id: coverage_percentage
+        shell: bash -ex {0}
+        run: |
+          PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
+          echo "::set-output name=PERCENTAGE::$PERCENTAGE"
+      - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Code coverage is too low. Current coverage is ${{steps.coverage_percentage.outputs.PERCENTAGE}}%. Minimum required coverage is 80%.'
+            })
+      - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
+        run: exit 1
