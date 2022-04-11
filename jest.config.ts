@@ -22,7 +22,7 @@ export default async (): Promise<Config.InitialOptions> => {
     coverageReporters: ['json-summary'],
     coverageThreshold: {
       global: {
-        lines: 80,
+        lines: 0,
       },
     },
   };
