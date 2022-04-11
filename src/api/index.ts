@@ -19,13 +19,3 @@ export const getWeather = async (coordinates: Coordinates, apiKey: string) => {
 import {getCoordinates} from './coordinates';
 
 export {getCoordinates};
-
-// export const getCoordinates = async () => {
-//   // const auth = await Geolocation.requestAuthorization('whenInUse');
-//   // console.log({auth});
-
-//   return {
-//     latitude: 44.7834,
-//     longitude: -79.9164,
-//   };
-// };
