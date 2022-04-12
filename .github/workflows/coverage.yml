@@ -12,6 +12,12 @@ jobs:
           ref: ${{github.event.pull_request.head.ref}}
       - name: Install
         run: yarn
+      - name: Get previous coverage
+        id: previous_coverage_percentage
+        shell: bash -ex {0}
+        run: |
+          PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
+          echo "::set-output name=PERCENTAGE::$PERCENTAGE"
       - name: Generate and commit report
         run: |
           yarn test:coverage
@@ -19,17 +25,18 @@ jobs:
           git config --global user.email github-actions@users.noreply.github.com
           git commit -am "Automated coverage report"
           git push
-      - name: Generate and commit badges
-        run: |
-          yarn test:badges
-          git commit -am "Automated coverage badges"
-          git push
-      - name: Check coverage
+      - name: Get new coverage
         id: coverage_percentage
         shell: bash -ex {0}
         run: |
           PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
           echo "::set-output name=PERCENTAGE::$PERCENTAGE"
+      - if: steps.previous_coverage_percentage.outputs.PERCENTAGE != steps.coverage_percentage.outputs.PERCENTAGE
+        name: Generate and commit badges
+        run: |
+          yarn test:badges
+          git commit -am "Automated coverage badges"
+          git push
       - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
         uses: actions/github-script@v4
         with:
