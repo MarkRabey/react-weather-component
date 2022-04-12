@@ -18,19 +18,21 @@ jobs:
         run: |
           PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
           echo "::set-output name=PERCENTAGE::$PERCENTAGE"
-      - name: Generate and commit report
-        run: |
-          yarn test:coverage
-          git config --global user.name github-actions
-          git config --global user.email github-actions@users.noreply.github.com
-          git commit -am "Automated coverage report"
-          git push
+      - name: Generate report
+        run: yarn test:coverage
       - name: Get new coverage
         id: coverage_percentage
         shell: bash -ex {0}
         run: |
           PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
           echo "::set-output name=PERCENTAGE::$PERCENTAGE"
+      - if: steps.previous_coverage_percentage.outputs.PERCENTAGE != steps.coverage_percentage.outputs.PERCENTAGE
+        name: Commit report
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@users.noreply.github.com
+          git commit -am "Automated coverage report"
+          git push
       - if: steps.previous_coverage_percentage.outputs.PERCENTAGE != steps.coverage_percentage.outputs.PERCENTAGE
         name: Generate and commit badges
         run: |
