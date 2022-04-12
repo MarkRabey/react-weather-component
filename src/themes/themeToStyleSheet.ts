@@ -1,7 +1,7 @@
 import {StyleSheet, ColorSchemeName} from 'react-native';
 import merge from 'lodash.merge';
 
-import {brandColors} from '.';
+import brandColors from './brandColors';
 import {Theme, WeatherStyles} from './types';
 import defaultTheme from './default';
 

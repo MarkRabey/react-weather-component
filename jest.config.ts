@@ -19,7 +19,7 @@ export default async (): Promise<Config.InitialOptions> => {
       '\\.(css|less)$': '<rootDir>/assetsTransformer.js',
       '^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'babel-jest',
     },
-    coverageReporters: ['json-summary'],
+    coverageReporters: ['json-summary', 'text'],
     coverageThreshold: {
       global: {
         lines: 0,
