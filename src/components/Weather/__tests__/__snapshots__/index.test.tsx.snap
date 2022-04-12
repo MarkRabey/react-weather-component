@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherComponent renders 1`] = `
+<div
+  className="css-view-1dbjc4n"
+>
+  <div
+    className="css-text-901oao"
+    dir="auto"
+  >
+    <div
+      aria-valuemax={1}
+      aria-valuemin={0}
+      className="css-view-1dbjc4n"
+      role="progressbar"
+      style={
+        Object {
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
+          "WebkitBoxPack": "center",
+          "WebkitJustifyContent": "center",
+          "alignItems": "center",
+          "display": "inline-flex",
+          "justifyContent": "center",
+          "msFlexAlign": "center",
+          "msFlexPack": "center",
+        }
+      }
+    >
+      <div
+        className="css-view-1dbjc4n r-animationKeyframes-127358a"
+        style={
+          Object {
+            "WebkitAnimationDuration": "0.75s",
+            "WebkitAnimationIterationCount": "infinite",
+            "WebkitAnimationTimingFunction": "linear",
+            "animationDuration": "0.75s",
+            "animationIterationCount": "infinite",
+            "animationTimingFunction": "linear",
+            "display": "inline-flex",
+            "height": "36px",
+            "width": "36px",
+          }
+        }
+      >
+        <svg
+          height="100%"
+          viewBox="0 0 32 32"
+          width="100%"
+        >
+          <circle
+            cx="16"
+            cy="16"
+            fill="none"
+            r="14"
+            strokeWidth="4"
+            style={
+              Object {
+                "opacity": 0.2,
+                "stroke": "#1976D2",
+              }
+            }
+          />
+          <circle
+            cx="16"
+            cy="16"
+            fill="none"
+            r="14"
+            strokeWidth="4"
+            style={
+              Object {
+                "stroke": "#1976D2",
+                "strokeDasharray": 80,
+                "strokeDashoffset": 60,
+              }
+            }
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

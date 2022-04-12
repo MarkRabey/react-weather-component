@@ -1,4 +1,4 @@
-import {brandColors} from '.';
+import brandColors from './brandColors';
 import {Theme} from './types';
 
 const lightTheme: Theme = {

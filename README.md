@@ -4,6 +4,12 @@
 
 > Display weather for current location.
 
+![coverage-branches](./coverage/badge-branches.svg)
+![coverage-functions](./coverage/badge-functions.svg)
+![coverage-lines](./coverage/badge-lines.svg)
+![coverage-statements](./coverage/badge-statements.svg)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+
 [![npm](https://img.shields.io/npm/v/react-weather-component)](https://www.npmjs.com/react-weather-component)
 [![NPM](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/MarkRabey/react-weather-component/blob/master/LICENSE)
 

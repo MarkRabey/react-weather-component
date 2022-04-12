@@ -5,7 +5,7 @@ import {SystemTheme, themes} from '../themes';
 
 export const useStyles = (theme?: Theme | SystemTheme) => {
   const colorScheme = useColorScheme();
-  let selectedTheme;
+  let selectedTheme: Theme;
   if (theme) {
     selectedTheme =
       typeof theme === 'string'
