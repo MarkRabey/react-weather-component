@@ -6,21 +6,22 @@ jobs:
   coverage-report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.pull_request.head.ref}}
       - name: Install
         run: yarn
-      - name: Generate report
-        run: yarn test:coverage
-      - name: Commit report
+      - name: Generate and commit report
         run: |
-          git config --global user.name 'MarkRabey'
-          git config --global user.email 'MarkRabey@users.noreply.github.com'
+          yarn test:coverage
+          git config --global user.name github-actions
+          git config --global user.email github-actions@users.noreply.github.com
           git commit -am "Automated coverage report"
           git push
-      - name: Generate badges
-        run: yarn test:badges
-      - name: Commit badges
+      - name: Generate and commit badges
         run: |
+          yarn test:badges
           git commit -am "Automated coverage badges"
           git push
       - name: Check coverage
