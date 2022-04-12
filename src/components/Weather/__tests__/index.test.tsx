@@ -14,7 +14,7 @@ jest.mock('../../../hooks/useStyles', () => ({
 }));
 
 describe('WeatherComponent', () => {
-  test('renders', () => {
+  it('renders correctly', () => {
     const result = renderer.create(<Weather apiKey="" />).toJSON();
     expect(result).toMatchSnapshot();
   });
