@@ -9,23 +9,26 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install
         run: yarn
-      - name: Run tests
+      - name: Generate report
         run: yarn test:coverage
+      - name: Commit report
+        run: |
+          git config --global user.name 'MarkRabey'
+          git config --global user.email 'MarkRabey@users.noreply.github.com'
+          git commit -am "Automated coverage report"
+          git push
+      - name: Generate badges
+        run: yarn test:badges
+      - name: Commit badges
+        run: |
+          git commit -am "Automated coverage badges"
+          git push
       - name: Check coverage
         id: coverage_percentage
         shell: bash -ex {0}
         run: |
           PERCENTAGE=$(node -p 'require("./coverage/coverage-summary.json").total.statements.pct')
           echo "::set-output name=PERCENTAGE::$PERCENTAGE"
-      - name: Commit Coverage Report
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: './coverage'
-          author_name: '${{ github.actor }}'
-          author_email: '${{ github.actor }}@users.noreply.github.com'
-          committer_name: 'GitHub'
-          committer_email: 'noreply@github.com'
-          message: 'updated coverage report'
       - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
         uses: actions/github-script@v4
         with:
