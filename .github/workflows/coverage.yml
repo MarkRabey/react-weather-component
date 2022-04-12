@@ -28,8 +28,6 @@ jobs:
               repo: context.repo.repo,
               body: 'Code coverage is too low. Current coverage is ${{steps.coverage_percentage.outputs.PERCENTAGE}}%. Minimum required coverage is 80%.'
             })
-      - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
-        run: exit 1
       - name: Commit Coverage Report
         uses: EndBug/add-and-commit@v9
         with:
@@ -39,3 +37,5 @@ jobs:
           committer_name: 'GitHub'
           committer_email: 'noreply@github.com'
           message: 'updated coverage report'
+      - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
+        run: exit 1
