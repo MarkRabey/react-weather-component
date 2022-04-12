@@ -43,6 +43,7 @@
     "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/react-native": "^9.0.0",
     "@types/jest": "^27.4.1",
+    "@types/lodash.isequal": "^4.5.5",
     "@types/lodash.merge": "^4.6.6",
     "@types/react-native": "^0.67.3",
     "@types/react-native-svg-uri": "^1.2.4",
@@ -70,6 +71,7 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "lodash.isequal": "^4.5.0",
     "lodash.merge": "^4.6.2",
     "react": "^17.0.2",
     "react-native": "^0.67.3",
