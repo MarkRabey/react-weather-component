@@ -30,3 +30,12 @@ jobs:
             })
       - if: steps.coverage_percentage.outputs.PERCENTAGE < 80
         run: exit 1
+      - name: Commit Coverage Report
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: './coverage'
+          author_name: '${{ github.actor }}'
+          author_email: '${{ github.actor }}@users.noreply.github.com'
+          committer_name: 'GitHub'
+          committer_email: 'noreply@github.com'
+          message: 'updated coverage report'
