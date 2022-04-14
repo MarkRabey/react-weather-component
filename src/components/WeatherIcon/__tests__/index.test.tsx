@@ -8,7 +8,6 @@ describe('WeatherIcon', () => {
     const result = renderer
       .create(<WeatherIcon icon="10" description="icon" />)
       .toJSON();
-    console.log({result});
 
     expect(result).toMatchSnapshot();
   });
