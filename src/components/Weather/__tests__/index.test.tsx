@@ -2,18 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import Weather from '..';
-import {Theme, WeatherStyles} from '../../../themes/types';
-
-// console.log({hooks});
-const mockStyles: WeatherStyles = {
-  container: {},
-  headingContainer: {},
-  heading: {},
-  subheading: {},
-  inner: {},
-  detailsContainer: {},
-  details: {},
-};
+import {Theme} from '../../../themes/types';
+import {mockStyles} from '../../../themes/__mocks__';
 
 const mockSelectedTheme: Theme = {name: 'testing'};
 jest.mock('../../../hooks/useStyles', () => ({
@@ -24,7 +14,7 @@ jest.mock('../../../hooks/useStyles', () => ({
 }));
 
 describe('WeatherComponent', () => {
-  test('renders', () => {
+  it('renders correctly', () => {
     const result = renderer.create(<Weather apiKey="" />).toJSON();
     expect(result).toMatchSnapshot();
   });
