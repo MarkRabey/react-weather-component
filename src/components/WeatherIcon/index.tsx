@@ -2,6 +2,9 @@ import React from 'react';
 import {Image} from 'react-native';
 
 interface WeatherIconProps {
+  /**
+   * Icon to display
+   * */
   icon: string;
   description: string;
 }
