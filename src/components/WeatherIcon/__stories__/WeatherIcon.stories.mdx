@@ -1,0 +1,41 @@
+import {
+  ArgsTable,
+  Meta,
+  Story,
+  Canvas,
+  IconGallery,
+  IconItem,
+} from '@storybook/addon-docs';
+
+import icons from './icons';
+console.log({icons});
+import WeatherIcon from '..';
+
+<Meta title="Components/WeatherIcon" component={WeatherIcon} />
+
+export const Template = args => <WeatherIcon {...args} />;
+
+# WeatherIcon
+
+Icons in categories. Each has day or night
+
+## Day icons
+
+<IconGallery>
+  {icons.map(icon => (
+    <IconItem name={`${icon.name} - day`}>
+      <WeatherIcon icon={`${icon.icon}d`} description={icon.description} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+## Night icons
+
+<IconGallery>
+  {icons.map(icon => (
+    <IconItem name={`${icon.name} - night`}>
+      <WeatherIcon icon={`${icon.icon}n`} description={icon.description} />
+    </IconItem>
+  ))}
+</IconGallery>
+<ArgsTable of={WeatherIcon} />

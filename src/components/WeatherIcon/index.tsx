@@ -1,11 +1,16 @@
 import React from 'react';
 import {Image} from 'react-native';
 
-interface WeatherIconProps {
+export interface WeatherIconProps {
   /**
-   * Icon to display
-   * */
+   * The icon to display.
+   *
+   * See https://openweathermap.org/weather-conditions#Icon-list for all available icons
+   */
   icon: string;
+  /**
+   * Weather description, used for image `accessibilityLabel`
+   */
   description: string;
 }
 
