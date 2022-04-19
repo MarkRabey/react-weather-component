@@ -12,7 +12,6 @@ import {useCoordinates} from '../../hooks/useCoordinates';
 interface Props {
   apiKey: string;
   theme?: Theme | SystemTheme;
-  colorScheme?: ColorSchemeName;
 }
 
 const Weather: React.FC<Props> = ({apiKey, theme}) => {

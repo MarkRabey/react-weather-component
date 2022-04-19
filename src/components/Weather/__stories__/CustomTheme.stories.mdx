@@ -1,0 +1,45 @@
+import {
+  ArgsTable,
+  Meta,
+  Canvas,
+  Story,
+  Description,
+} from '@storybook/addon-docs';
+
+import Weather from '..';
+
+import defaultCustomTheme from './customTheme';
+
+<Meta
+  title="Components/Weather"
+  argTypes={{
+    apiKey: {table: {disable: true}},
+    theme: {
+      control: {type: 'object'},
+      containerStyles: {
+        control: {
+          type: 'object',
+        },
+        backgroundColor: {
+          control: {
+            type: 'color',
+          },
+        },
+      },
+    },
+  }}
+/>
+
+export const Template = args => (
+  <Weather
+    apiKey={process.env.STORYBOOK_API_KEY || ''}
+    theme={defaultCustomTheme}
+    {...args}
+  />
+);
+
+# Custom Theme
+
+<Story name="Custom Theme">{Template.bind({})}</Story>
+
+<ArgsTable of={Weather} />
