@@ -1,13 +1,13 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Text, View, ColorSchemeName, ActivityIndicator} from 'react-native';
 
-import {Coordinates} from '../../models/Coordinates';
 import {WeatherResponse} from '../../models/Weather';
-import {getCoordinates, getWeather} from '../../api';
+import {getWeather} from '../../api';
 import {useStyles} from '../../hooks/useStyles';
 import {Theme} from '../../themes/types';
 import WeatherIcon from '../WeatherIcon';
-import {SystemTheme, themes} from '../../themes';
+import {SystemTheme} from '../../themes';
+import {useCoordinates} from '../../hooks/useCoordinates';
 
 interface Props {
   apiKey: string;
@@ -18,43 +18,30 @@ interface Props {
 const Weather: React.FC<Props> = ({apiKey, theme}) => {
   const {styles, selectedTheme} = useStyles(theme);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const {coordinates, isLoading} = useCoordinates();
   const [forecast, setForecast] = useState<WeatherResponse | null>(null);
-  const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
-
-  const getLocation = async () => {
-    await setIsLoading(true);
-    const coords = await getCoordinates();
-    setCoordinates(coords);
-    await setIsLoading(false);
-  };
 
   const getForecast = useCallback(async () => {
     if (coordinates) {
-      await setIsLoading(true);
       const data = await getWeather(coordinates, apiKey);
       setForecast(data);
-      await setIsLoading(false);
     }
   }, [apiKey, coordinates]);
 
   useEffect(() => {
-    if (!forecast) {
-      if (coordinates) {
-        getForecast();
-      } else {
-        getLocation();
-      }
+    if (coordinates && !isLoading) {
+      getForecast();
     }
-  }, [coordinates, forecast, getForecast]);
+  }, [coordinates, getForecast, isLoading]);
 
   return (
     <View style={styles.container}>
       {isLoading ? (
-        <Text style={styles.details}>
+        <Text style={styles.details} testID="loading">
           <ActivityIndicator
             size="large"
             color={selectedTheme.detailStyles?.color}
+            accessibilityLabel="loading"
           />
         </Text>
       ) : (

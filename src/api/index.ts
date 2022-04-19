@@ -11,7 +11,7 @@ export const getWeather = async (coordinates: Coordinates, apiKey: string) => {
     const {data}: AxiosResponse<WeatherResponse> = await axios.get(API_URL);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 };

@@ -4,8 +4,14 @@ import {getWeather} from '..';
 import {getCoordinates} from '../coordinates/index.web';
 
 describe('getWeather', () => {
+  let consoleSpy: jest.SpyInstance;
+  beforeEach(() => {
+    consoleSpy = jest.spyOn(console, 'error');
+    consoleSpy.mockReturnValue(undefined);
+  });
   afterEach(() => {
     mockAxios.reset();
+    consoleSpy.mockRestore();
   });
 
   it('returns weather data on success', async () => {
@@ -38,19 +44,6 @@ describe('getWeather', () => {
 describe('getCoordinates', () => {
   const defaultGeolocation = navigator.geolocation;
   it('returns a set of coordinates', async () => {
-    const mockGeolocation = {
-      getCurrentPosition: jest.fn().mockImplementation(success => {
-        Promise.resolve(
-          success({
-            coords: {
-              latitude: 10,
-              longitude: 10,
-            },
-          }),
-        );
-      }),
-    };
-    navigator.geolocation = mockGeolocation;
     const {latitude, longitude} = await getCoordinates();
 
     expect(latitude).toEqual(10);

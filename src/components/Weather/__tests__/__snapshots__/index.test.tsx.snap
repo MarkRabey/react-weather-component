@@ -1,83 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WeatherComponent renders correctly 1`] = `
+exports[`WeatherComponent - forecast renders correctly 1`] = `
 <div
   className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitFlex": 1,
+      "backgroundColor": "rgba(249,250,251,1.00)",
+      "borderBottomColor": "rgba(229,231,235,1.00)",
+      "borderBottomLeftRadius": "4px",
+      "borderBottomRightRadius": "4px",
+      "borderBottomWidth": "2px",
+      "borderLeftColor": "rgba(229,231,235,1.00)",
+      "borderLeftWidth": "2px",
+      "borderRightColor": "rgba(229,231,235,1.00)",
+      "borderRightWidth": "2px",
+      "borderTopColor": "rgba(229,231,235,1.00)",
+      "borderTopLeftRadius": "4px",
+      "borderTopRightRadius": "4px",
+      "borderTopWidth": "2px",
+      "flex": 1,
+      "msFlex": "1 1 0%",
+      "paddingBottom": "12px",
+      "paddingLeft": "12px",
+      "paddingRight": "12px",
+      "paddingTop": "12px",
+    }
+  }
 >
   <div
     className="css-text-901oao"
     dir="auto"
-  >
-    <div
-      aria-valuemax={1}
-      aria-valuemin={0}
-      className="css-view-1dbjc4n"
-      role="progressbar"
-      style={
-        Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxPack": "center",
-          "WebkitJustifyContent": "center",
-          "alignItems": "center",
-          "display": "inline-flex",
-          "justifyContent": "center",
-          "msFlexAlign": "center",
-          "msFlexPack": "center",
-        }
+    style={
+      Object {
+        "color": "rgba(139,92,246,1.00)",
+        "fontSize": "12px",
       }
-    >
-      <div
-        className="css-view-1dbjc4n r-animationKeyframes-127358a"
-        style={
-          Object {
-            "WebkitAnimationDuration": "0.75s",
-            "WebkitAnimationIterationCount": "infinite",
-            "WebkitAnimationTimingFunction": "linear",
-            "animationDuration": "0.75s",
-            "animationIterationCount": "infinite",
-            "animationTimingFunction": "linear",
-            "display": "inline-flex",
-            "height": "36px",
-            "width": "36px",
-          }
-        }
-      >
-        <svg
-          height="100%"
-          viewBox="0 0 32 32"
-          width="100%"
-        >
-          <circle
-            cx="16"
-            cy="16"
-            fill="none"
-            r="14"
-            strokeWidth="4"
-            style={
-              Object {
-                "opacity": 0.2,
-                "stroke": "#1976D2",
-              }
-            }
-          />
-          <circle
-            cx="16"
-            cy="16"
-            fill="none"
-            r="14"
-            strokeWidth="4"
-            style={
-              Object {
-                "stroke": "#1976D2",
-                "strokeDasharray": 80,
-                "strokeDashoffset": 60,
-              }
-            }
-          />
-        </svg>
-      </div>
-    </div>
+    }
+  >
+    Something went wrong...
   </div>
 </div>
 `;

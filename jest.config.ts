@@ -9,7 +9,10 @@ export default async (): Promise<Config.InitialOptions> => {
     preset: 'react-native-web',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     modulePathIgnorePatterns: ['<rootDir>/packages/'],
-    setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+    setupFilesAfterEnv: [
+      '@testing-library/jest-native/extend-expect',
+      '<rootDir>/src/setupTests.js',
+    ],
     transformIgnorePatterns: [
       'node_modules/(?!@react-native|react-native|redux-persist-sensitive-storage)',
     ],

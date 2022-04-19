@@ -19,8 +19,8 @@ export const getCoordinates = () => {
       );
     } else {
       resolve({
-        latitude: 44.7834,
-        longitude: -79.9164,
+        latitude: 0,
+        longitude: 0,
       });
     }
   });
