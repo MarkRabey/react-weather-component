@@ -7,10 +7,7 @@ export const useStyles = (theme?: Theme | SystemTheme) => {
   const colorScheme = useColorScheme();
   let selectedTheme: Theme;
   if (theme) {
-    selectedTheme =
-      typeof theme === 'string'
-        ? themes[theme]
-        : themes[colorScheme || 'light'];
+    selectedTheme = typeof theme === 'string' ? themes[theme] : theme;
   } else {
     selectedTheme = themes[colorScheme || 'light'];
   }
