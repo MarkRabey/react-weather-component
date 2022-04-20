@@ -2,7 +2,10 @@ const path = require('path');
 
 module.exports = {
   core: {builder: 'webpack5'},
-  stories: ['../src/**/*.stories.@(js|mdx|ts|tsx)'],
+  stories: [
+    '../src/__stories__/Installation.stories.mdx',
+    '../src/**/*.stories.@(js|mdx|ts|tsx)',
+  ],
   addons: [
     '@storybook/preset-create-react-app',
     '@storybook/addon-docs',
