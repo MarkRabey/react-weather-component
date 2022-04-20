@@ -10,7 +10,7 @@ import defaultCustomTheme from './customTheme';
 import customThemeControls, {argsToTheme} from './customThemeControls';
 
 import Weather from '..';
-let customTheme = argsToTheme({});
+let customTheme = defaultCustomTheme;
 
 <Meta
   title="Styling/Custom Themes"
@@ -44,7 +44,7 @@ export const Template = args => {
 
 <Story name="Custom Themes">{Template.bind({})}</Story>
 
-<Source language="js" format dark code={JSON.stringify(customTheme)} />
+<Source language="json" dark code={`${JSON.stringify(customTheme, null, 2)}`} />
 
 ## Try it!
 
