@@ -2,36 +2,36 @@ export default [
   {
     name: 'Thunderstorm',
     description: 'thunderstorm codes',
-    icon: '11',
+    iconCode: '11',
   },
   {
     name: 'Drizzle',
     description: 'drizzle codes',
-    icon: '09',
+    iconCode: '09',
   },
   {
     name: 'Rain',
     description: 'rain codes',
-    icon: '10',
+    iconCode: '10',
   },
   {
     name: 'Snow',
     description: 'snow codes',
-    icon: '13',
+    iconCode: '13',
   },
   {
-    name: 'Atmosphere ',
+    name: 'Atmosphere',
     description: 'atmosphere  codes',
-    icon: '50',
+    iconCode: '50',
   },
   {
-    name: 'Clear ',
+    name: 'Clear',
     description: 'clear  codes',
-    icon: '01',
+    iconCode: '01',
   },
   {
-    name: 'Clouds ',
+    name: 'Clouds',
     description: 'cloud  codes',
-    icon: '02',
+    iconCode: '02',
   },
 ];

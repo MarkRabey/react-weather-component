@@ -1,16 +1,35 @@
-import {select, text, getArgs} from '../../../utils/storybookControls';
-import {WeatherIconProps} from '..';
+import icons from './icons';
 
-const argTypes = getArgs<WeatherIconProps>({
+const iconLabels = {};
+
+for (let index = 0; index < icons.length; index++) {
+  const element = icons[index];
+  iconLabels[`${element.iconCode}`] = element.name;
+}
+
+const argTypes = {
   icon: {
-    ...select(['11d', '10d', '09d'], '10d', {
-      name: 'icon',
-      description: 'Icon',
-    }),
+    defaultValue: icons[0].iconCode,
+    control: {
+      type: 'select',
+      options: icons.map(x => x.iconCode),
+      labels: iconLabels,
+    },
   },
-  description: text('Icon Description'),
-});
-
-console.log({argTypes});
+  variant: {
+    defaultValue: 'd',
+    control: {
+      type: 'radio',
+      options: ['d', 'n'],
+      labels: {
+        d: 'Day',
+        n: 'Night',
+      },
+    },
+  },
+  description: {
+    defaultValue: 'icon description',
+  },
+};
 
 export default argTypes;

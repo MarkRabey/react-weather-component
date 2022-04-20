@@ -7,57 +7,22 @@ import {
   Story,
 } from '@storybook/addon-docs';
 
+import argTypes from './argTypes';
 import icons from './icons';
 import WeatherIcon, {WeatherIconProps} from '..';
-
-import argTypes from './argTypes';
 
 <Meta
   title="Components/WeatherIcon"
   component={WeatherIcon}
-  argTypes={{
-    icon: {
-      defaultValue: '11d',
-      control: {
-        type: 'select',
-        options: ['11', '09', '10', '13', '50', '01', '02'],
-        labels: {
-          '11': 'Thunderstorm',
-          '09': 'Drizzle',
-          '10': 'Rain',
-          '13': 'Snow',
-          '50': 'Atmosphere',
-          '01': 'Clear',
-          '02': 'Clouds',
-        },
-      },
-    },
-    variant: {
-      defaultValue: 'd',
-      control: {
-        type: 'radio',
-        options: ['d', 'n'],
-        labels: {
-          d: 'Day',
-          n: 'Night',
-        },
-      },
-    },
-    description: {
-      defaultValue: 'icon description',
-    },
-  }}
+  argTypes={argTypes}
 />
 
-export const Template = args => {
-  console.log({args});
-  return (
-    <WeatherIcon
-      icon={`${args.icon}${args.variant}`}
-      description={args.description}
-    />
-  );
-};
+export const Template = args => (
+  <WeatherIcon
+    icon={`${args.icon}${args.variant}`}
+    description={args.description}
+  />
+);
 
 # WeatherIcon
 
