@@ -12,3 +12,5 @@ export const themes = {
 };
 
 export type SystemTheme = keyof typeof themes;
+
+export const themeNames = Object.keys(themes);

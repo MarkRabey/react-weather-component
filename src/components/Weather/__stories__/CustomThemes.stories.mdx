@@ -1,0 +1,51 @@
+import {
+  ArgsTable,
+  Meta,
+  Source,
+  Story,
+  Description,
+} from '@storybook/addon-docs';
+import {themeNames} from '../../../themes';
+import defaultCustomTheme from './customTheme';
+import customThemeControls, {argsToTheme} from './customThemeControls';
+
+import Weather from '..';
+let customTheme = argsToTheme({});
+
+<Meta
+  title="Styling/Custom Themes"
+  component={Weather}
+  argTypes={{
+    apiKey: {table: {disable: true}},
+    theme: {table: {disable: true}},
+    ...customThemeControls,
+  }}
+/>
+
+export const Template = args => {
+  customTheme = argsToTheme(args);
+  return (
+    <Weather apiKey={process.env.STORYBOOK_API_KEY || ''} theme={customTheme} />
+  );
+};
+
+# Custom Themes
+
+<Description>
+  Custom themes allow full control over how the component is displayed.
+</Description>
+
+| Property           | Accepted Values | Default | Required |
+| ------------------ | --------------- | ------- | -------- |
+| `containerStyles`  | `ViewStyles`    | `{}`    | no       |
+| `headingStyles`    | `TextStyles`    | `{}`    | no       |
+| `subheadingStyles` | `TextStyles`    | `{}`    | no       |
+| `detailsStyles`    | `TextStyles`    | `{}`    | no       |
+
+<Story name="Custom Themes">{Template.bind({})}</Story>
+
+<Source language="js" format dark code={JSON.stringify(customTheme)} />
+
+## Try it!
+
+<ArgsTable story="Custom Themes" />

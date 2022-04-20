@@ -1,0 +1,46 @@
+import {
+  ArgsTable,
+  Meta,
+  Canvas,
+  Story,
+  Description,
+} from '@storybook/addon-docs';
+import {themeNames} from '../../../themes';
+
+import Weather from '..';
+
+<Meta
+  title="Styling/Predefined Themes"
+  component={Weather}
+  argTypes={{
+    apiKey: {table: {disable: true}},
+    theme: {
+      name: 'Theme',
+      description:
+        'Accepts one of the predefined themes, or a custom `Theme` object.',
+      control: {type: 'select', options: themeNames, expanded: true},
+      defaultValue: 'light',
+      table: {
+        type: {
+          summary: null,
+        },
+        defaultValue: {
+          summary: 'light',
+          detail: 'System color scheme if available. Uses`light` otherwise',
+        },
+      },
+    },
+  }}
+/>
+
+export const Template = args => (
+  <Weather apiKey={process.env.STORYBOOK_API_KEY || ''} {...args} />
+);
+
+# Predefined Themes
+
+<Canvas withToolbar isColumn>
+  <Story name="Predefined Themes">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable story="Predefined Themes" />

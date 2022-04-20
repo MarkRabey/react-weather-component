@@ -13,7 +13,6 @@ import Weather from '..';
   component={Weather}
   argTypes={{
     apiKey: {table: {disable: true}},
-    theme: {table: {disable: true}},
   }}
 />
 
@@ -22,18 +21,7 @@ export const Template = args => (
 );
 
 <Canvas>
-  <Story name="Light" args={{theme: 'light'}}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Dark" args={{theme: 'dark'}}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Monospace Dark" args={{theme: 'monospace-dark'}}>
-    {Template.bind({})}
-  </Story>
-  <Story name="Monospace Light" args={{theme: 'monospace-light'}}>
-    {Template.bind({})}
-  </Story>
+  <Story name="Weather">{Template.bind({})}</Story>
 </Canvas>
 
 <ArgsTable of={Weather} />
