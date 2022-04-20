@@ -12,6 +12,8 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-controls',
+    'storybook-version',
+    'storybook-addon-github-issues',
   ],
   webpackFinal: config => {
     config.resolve.alias = {

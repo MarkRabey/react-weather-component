@@ -65,3 +65,7 @@ coverage/**
 !coverage/*.svg
 !coverage/coverage-summary.json
 yalc.lock
+
+# Docs
+docs-build
+.env
