@@ -1,0 +1,40 @@
+import {Source, Meta, Story, Description} from '@storybook/addon-docs';
+import dedent from 'ts-dedent';
+
+import DemoComponent from './DemoComponent';
+
+<Meta title="Custom Hooks/useCoordinates()" />
+
+# Hooks
+
+<Description
+  markdown={dedent`
+The \`useCoordinates()\` hook does three things:
+1. request location permission from the user
+2. returns the latitude and longitude retrieved (\`{latitude: number; longitude: number;}\`)
+3. informs if location data is loading`}
+/>
+
+<Story name="useCoordinates()">
+  <DemoComponent />
+</Story>
+
+<Source
+  language="jsx"
+  dark
+  code={dedent`
+import {useCoordinates} from 'react-weather-component';
+${' '}
+const MyComponent = () => {
+  const {coordinates, isLoading} = useCoordinates();
+  
+  return isLoading ? <div>Loading...</div> : (
+    <div>
+      <p style={styles.text}>isLoading: {\`\${isLoading}\`}</p>
+      <p>latitude: {coordinates?.latitude}</p>
+      <p>longitude: {coordinates?.longitude}</p>
+    </div>
+  );
+}
+`}
+/>
