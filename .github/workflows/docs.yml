@@ -1,6 +1,7 @@
 name: Build and Deploy Docs
 on:
   push:
+    paths: ['.storybook/**', 'src/**/*.stories.*']
     branches: ['release/1.0.0', main]
 
 jobs:
