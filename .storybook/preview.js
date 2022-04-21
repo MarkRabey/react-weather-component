@@ -1,8 +1,8 @@
-import {version} from '../package.json';
+import pkg from '../package.json';
 
 import theme from './theme';
 
-const [major, minor, patch] = version.split('.');
+const [major, minor, patch] = pkg.version.split('.');
 
 export const parameters = {
   controls: {expanded: true},
