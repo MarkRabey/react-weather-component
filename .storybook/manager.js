@@ -9,4 +9,8 @@ const theme = create({
 
 addons.setConfig({
   theme,
+  toolbar: {
+    zoom: {hidden: true},
+    fullscreen: {hidden: true},
+  },
 });

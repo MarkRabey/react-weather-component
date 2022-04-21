@@ -3,17 +3,29 @@ const path = require('path');
 module.exports = {
   core: {builder: 'webpack5'},
   stories: [
-    '../src/__stories__/Installation.stories.mdx',
+    '../src/__stories__/Welcome.stories.mdx',
     '../src/**/*.stories.@(js|mdx|ts|tsx)',
   ],
   addons: [
     '@storybook/preset-create-react-app',
-    '@storybook/addon-docs',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        transcludeMarkdown: true,
+      },
+    },
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        background: false,
+        viewport: false,
+        measure: false,
+        outline: false,
+      },
+    },
     '@storybook/addon-controls',
     'storybook-version',
-    'storybook-addon-github-issues',
   ],
   webpackFinal: config => {
     config.resolve.alias = {

@@ -1,5 +1,4 @@
 import {version} from '../package.json';
-
 const [major, minor, patch] = version.split('.');
 
 export const parameters = {
@@ -13,8 +12,10 @@ export const parameters = {
     minor,
     patch,
   },
-  issues: {
-    repository: process.env.GITHUB_REPO,
-    token: process.env.GITHUB_TOKEN,
+  backgrounds: {
+    disable: true,
+    grid: {disable: true},
+    outlines: {disable: true},
   },
+  layout: 'centered',
 };
