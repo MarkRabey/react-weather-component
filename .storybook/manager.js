@@ -1,11 +1,6 @@
 import {addons} from '@storybook/addons';
-import {create} from '@storybook/theming';
 
-const theme = create({
-  base: 'light',
-  brandTitle: 'React Weather Component',
-  brandUrl: 'https://markrabey.github.io/react-weather-component',
-});
+import theme from './theme';
 
 addons.setConfig({
   theme,
