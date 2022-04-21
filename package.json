@@ -14,7 +14,7 @@
     "build:web:watch": "npm-watch build:web",
     "build:native:watch": "npm-watch build:native",
     "docs:build": "build-storybook -o docs-build",
-    "doc:deploy": "yarn docs:build && gh-pages -d docs-build",
+    "docs:deploy": "yarn docs:build && gh-pages -d docs-build",
     "bootstrap": "lerna bootstrap --ignore-scripts --force-local",
     "lint": "tsc && eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "tsc && eslint . --fix --ext .js,.jsx,.ts,.tsx",
