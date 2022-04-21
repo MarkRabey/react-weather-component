@@ -1,0 +1,27 @@
+import {
+  ArgsTable,
+  Meta,
+  Canvas,
+  Story,
+  Description,
+} from '@storybook/addon-docs';
+
+import Weather from '..';
+
+<Meta
+  title="Components/Weather"
+  component={Weather}
+  argTypes={{
+    apiKey: {table: {disable: true}},
+  }}
+/>
+
+export const Template = args => (
+  <Weather apiKey={process.env.STORYBOOK_API_KEY || ''} {...args} />
+);
+
+<Canvas>
+  <Story name="Weather">{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable of={Weather} />
