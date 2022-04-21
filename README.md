@@ -10,6 +10,10 @@
 [![npm](https://img.shields.io/npm/v/react-weather-component)](https://www.npmjs.com/react-weather-component)
 [![NPM](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/MarkRabey/react-weather-component/blob/master/LICENSE)
 
+## IMPORTANT
+
+This represents the **upcoming** release. For the current version, view the package on [NPM](https://www.npmjs.com/react-weather-component).
+
 ## Installation
 
 With `yarn`:
