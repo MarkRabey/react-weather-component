@@ -17,9 +17,16 @@ const argTypes = {
     },
   },
   variant: {
+    description:
+      'Each icon has a "day" or "night" variant. This is not a property on the component. This is only for demo purposes.',
+    table: {
+      type: {
+        summary: null,
+      },
+    },
     defaultValue: 'd',
     control: {
-      type: 'radio',
+      type: 'inline-radio',
       options: ['d', 'n'],
       labels: {
         d: 'Day',

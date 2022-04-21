@@ -32,8 +32,8 @@ Icons in categories. Each has day or night
 
 <IconGallery>
   {icons.map(icon => (
-    <IconItem name={`${icon.name} - day`}>
-      <WeatherIcon icon={`${icon.icon}d`} description={icon.description} />
+    <IconItem name={`${icon.iconCode}d (${icon.name})`}>
+      <WeatherIcon icon={`${icon.iconCode}d`} description={icon.description} />
     </IconItem>
   ))}
 </IconGallery>
@@ -42,14 +42,14 @@ Icons in categories. Each has day or night
 
 <IconGallery>
   {icons.map(icon => (
-    <IconItem name={`${icon.name} - night`}>
-      <WeatherIcon icon={`${icon.icon}n`} description={icon.description} />
+    <IconItem name={`${icon.iconCode}n (${icon.name})`}>
+      <WeatherIcon icon={`${icon.iconCode}n`} description={icon.description} />
     </IconItem>
   ))}
 </IconGallery>
 
-<Canvas>
+<Canvas withSource="open">
   <Story name="WeatherIcon">{Template.bind({})}</Story>
 </Canvas>
 
-<ArgsTable of={WeatherIcon} />
+<ArgsTable story="WeatherIcon" />
